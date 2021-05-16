@@ -1,0 +1,9 @@
+name: MinecraftPlugin
+version: @version@
+main: app.muramasa.minecraftplugin.MinecraftPlugin
+api-version: '1.16'
+author: MURAMASA2470
+
+commands:
+  hahaha:
+    description: Sample command.
