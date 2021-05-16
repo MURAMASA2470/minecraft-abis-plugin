@@ -1,5 +1,6 @@
 package app.muramasa.minecraftplugin
 
+import app.muramasa.minecraftplugin.events.PlayerMoved
 import org.bukkit.Server
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
@@ -14,6 +15,7 @@ class MinecraftPlugin : JavaPlugin() {
     override fun onEnable() {
         // Plugin startup logic
         logger.info("Hello!!")
+        PlayerMoved(this)
     }
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
