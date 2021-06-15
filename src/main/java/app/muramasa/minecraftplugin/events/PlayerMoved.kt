@@ -1,23 +1,21 @@
-package app.muramasa.minecraftplugin.events;
+package app.muramasa.minecraftplugin.events
 
-import org.bukkit.EntityEffect
 import org.bukkit.Location
 import org.bukkit.entity.Player
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.EventHandler
+import org.bukkit.event.EventPriority
+import org.bukkit.event.Listener
+import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.plugin.Plugin
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
-class PlayerMoved : Listener {
+class PlayerMoved(plugin: Plugin) : Listener {
 
     private var effects : Map<Int, Collection<PotionEffect>> = mutableMapOf()
 
-    constructor(plugin: Plugin) {
+    init {
         plugin.server.pluginManager.registerEvents(this, plugin)
-
         this.effects = mutableMapOf(
             60 to mutableListOf(
                 PotionEffect(PotionEffectType.HUNGER, 60, 60),
@@ -39,8 +37,8 @@ class PlayerMoved : Listener {
     fun onMove(e: PlayerMoveEvent) {
 
 
-        var player : Player = e.player
-        var loc : Location = player.getLocation()
+        val player : Player = e.player
+        val loc : Location = player.location
 
         if (loc.y < 60) {
             player.sendTitle("y=60以下", "", 1, 3, 1)
